@@ -1,0 +1,22 @@
+--- 
+## these are nginx inclue task
+- name: install python-software-properties
+  action: apt pkg='python-software-properties' ensure=installed
+
+- name: "add nginx ppa if it ubuntu 10.04 and up"
+  action: command /usr/bin/add-apt-repository -y ppa:nginx/stable
+  only_if: "$is_ubuntu and $is_10_up"
+
+- name: update apt repo
+  action: command /usr/bin/apt-get update
+
+- name: install nginx 
+  action: apt pkg=nginx ensure=installed
+
+- name: service nginx 
+  action: service name=nginx state=started 
+
+- name: write nginx.conf 
+  action: template src='nginx/templates/nginx.j2' dest='/etc/nginx/nginx.conf'
+  notify:
+    - restart nginx
