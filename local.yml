@@ -1,8 +1,8 @@
 ---
 # easy Ubuntu nginx playbook as an example.
+# this is a test for ec2 user-data  -- root 
 - hosts: localhost 
-  user: ubuntu 
-  sudo: True
+  user: root 
 
   vars:
      #workers: use at template ansible_processor_count 
