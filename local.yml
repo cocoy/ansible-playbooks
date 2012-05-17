@@ -1,0 +1,9 @@
+---
+# easy Ubuntu nginx playbook as an example.
+- hosts: all
+  user: ubuntu 
+  sudo: True
+
+  tasks:
+     - name: echo command 
+       action: command echo "hello" 
