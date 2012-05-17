@@ -1,9 +1,18 @@
 ---
 # easy Ubuntu nginx playbook as an example.
-- hosts: all
+- hosts: web-servers
   user: ubuntu 
   sudo: True
 
+  vars:
+     #workers: use at template ansible_processor_count 
+     connections : "1024"
+
+     is_10_up: "'$ansible_distribution_version' >= '10.04'"
+     is_ubuntu: "'$ansible_distribution' == 'Ubuntu'"
+
   tasks:
-     - name: echo command 
-       action: command echo "hello" 
+     - include: nginx/tasks/nginx-task.yml
+  handlers:
+     - name: restart nginx
+       action: service name=nginx state=restarted
