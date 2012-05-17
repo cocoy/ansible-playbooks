@@ -1,6 +1,6 @@
 ---
 # easy Ubuntu nginx playbook as an example.
-- hosts: web-servers
+- hosts: localhost 
   user: ubuntu 
   sudo: True
 
