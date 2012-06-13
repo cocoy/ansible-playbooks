@@ -1,6 +1,8 @@
 ---
 # easy Ubuntu nginx playbook as an example.
-# this is a test for ec2 user-data  -- root 
+# this is a test for ec2 user-data  
+# local.yml is used for pull-based Ansible setup.
+
 - hosts: localhost 
   user: root 
 
