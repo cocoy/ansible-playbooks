@@ -1,5 +1,6 @@
 ---
-- hosts: dev-servers
+### A dev server is a all-in one nginx+php+myql server
+- hosts: dev-server
   user: ubuntu 
   sudo: True
   vars: 
