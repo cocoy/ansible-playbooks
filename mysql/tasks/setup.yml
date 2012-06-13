@@ -1,0 +1,14 @@
+---     
+     - name: update apt repo
+       action: command /usr/bin/apt-get update
+
+     - name: install mysql-server 
+       action: apt pkg=mysql-server ensure=installed
+
+     - name: service mysql  
+       action: service name=mysql state=started 
+
+     - name: write my.cnf 
+       action: template src='mysql/templates/my.cnf.j2' dest='/etc/mysql/my.cnf'
+       notify:
+       - restart mysql 

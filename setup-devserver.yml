@@ -1,0 +1,27 @@
+---
+- hosts: dev-servers
+  user: ubuntu 
+  sudo: True
+  vars: 
+     #nginx 
+     connections: "800"
+
+     #mysql
+     bind_address: "127.0.0.1" 
+     key_buffer: "16M"
+
+     #php5-fpm 
+     max_children: 5
+     start_servers: 2 
+     min_spare_servers: 2
+     max_spare_servers: 4
+  
+  tasks:
+     - include: nginx/tasks/setup.yml 
+     - include: php-fpm/tasks/setup.yml
+     - include: mysql/tasks/setup.yml 
+
+  handlers:
+     - include: nginx/handlers/handler.yml  
+     - include: php-fpm/handlers/handler.yml  
+     - include: mysql/handlers/handler.yml  

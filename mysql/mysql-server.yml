@@ -1,0 +1,14 @@
+---
+- hosts: mysql-servers
+  user: ubuntu 
+  sudo: True
+
+  vars:
+     bind_address: "127.0.0.1" 
+     key_buffer: "16M"
+     
+  tasks:
+     - include: tasks/setup.yml
+
+  handlers:
+     - include: handlers/handler.yml     
