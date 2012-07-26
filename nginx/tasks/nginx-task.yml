@@ -13,10 +13,13 @@
 - name: install nginx 
   action: apt pkg=nginx ensure=installed
 
+- name:  copy fixed init for nginx
+  action: copy src=nginx/files/nginx.init dest=/etc/init.d/nginx mode=0755 
+
 - name: service nginx 
   action: service name=nginx state=started 
 
 - name: write nginx.conf 
-  action: template src='nginx/templates/nginx.j2' dest='/etc/nginx/nginx.conf'
+  action: template src='nginx/templates/nginx.conf.j2' dest='/etc/nginx/nginx.conf'
   notify:
     - restart nginx
