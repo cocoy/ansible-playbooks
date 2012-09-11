@@ -1,9 +1,9 @@
 ---      
    - name: install php-fpm 
-     action: apt pkg=php5-fpm ensure=installed    
+     action: apt name=php5-fpm state=installed    
 
    - name: php install needed modules
-     action: apt pkg=$item ensure=installed    
+     action: apt name=$item state=installed    
      with_items: 
         - php5-common
         - php5-curl

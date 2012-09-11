@@ -3,7 +3,7 @@
        action: command /usr/bin/apt-get update
 
      - name: install mysql-server 
-       action: apt pkg=mysql-server ensure=installed
+       action: apt name=mysql-server state=installed
 
      - name: service mysql  
        action: service name=mysql state=started 
