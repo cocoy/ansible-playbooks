@@ -15,6 +15,10 @@
 
   tasks:
      - include: nginx/tasks/nginx-task.yml
+
+     - name: just check if local is updated.
+       action: command echo "Hello Ansible."
+
   handlers:
      - name: restart nginx
        action: service name=nginx state=restarted
