@@ -7,11 +7,11 @@
   action: apt name='python-software-properties' state=installed
 
 - name: "add nginx ppa if it ubuntu 10.04 and up"
-  action: command add-apt-repository  -y ppa:nginx/stable
+  action: apt_repository repo=ppa:nginx/stable
   only_if: "$is_ubuntu and $is_10_up"
 
 - name: update apt repo
-  action: apt_repository repo=ppa:nginx/stable
+  action: apt update-cache=yes
 
 - name: install nginx 
   action: apt name=nginx state=installed
