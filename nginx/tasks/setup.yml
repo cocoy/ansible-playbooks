@@ -11,18 +11,18 @@
   only_if: "$is_ubuntu and $is_10_up"
 
 - name: update apt repo
-  action: command /usr/bin/apt-get update
+  action: apt_repository repo=ppa:nginx/stable
 
 - name: install nginx 
   action: apt name=nginx state=installed
 
 - name:  copy fixed init for nginx
-  action: copy src=nginx/files/nginx.init dest=/etc/init.d/nginx mode=0755 
+  action: copy src=nginx/files/nginx.init dest=/etc/init.d/nginx mode=0755  backup=yes
 
 - name: service nginx 
   action: service name=nginx state=started 
 
 - name: write nginx.conf 
-  action: template src='nginx/templates/nginx.conf.j2' dest='/etc/nginx/nginx.conf'
+  action: template src='nginx/templates/nginx.conf.j2' dest='/etc/nginx/nginx.conf' backup=yes
   notify:
     - restart nginx

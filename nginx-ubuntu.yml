@@ -12,7 +12,7 @@
      is_ubuntu: "'$ansible_distribution' == 'Ubuntu'"
 
   tasks:
-     - include: nginx/tasks/nginx-task.yml
+     - include: nginx/tasks/setup.yml
   handlers:
      - name: restart nginx
        action: service name=nginx state=restarted

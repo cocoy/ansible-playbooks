@@ -14,7 +14,7 @@
      is_ubuntu: "'$ansible_distribution' == 'Ubuntu'"
 
   tasks:
-     - include: nginx/tasks/nginx-task.yml
+     - include: nginx/tasks/setup.yml
 
      - name: just check if local is updated.
        action: command echo "Hello Ansible."
